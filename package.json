@@ -1,0 +1,29 @@
+{
+  "name": "proyecto-repuestos",
+  "version": "1.0.0",
+  "description": "Sistema de gestión de repuestos",
+  "main": "app.js",
+"scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Elver Joya G, Oscar hernandez",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cloudinary": "^2.7.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-validator": "^7.0.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.3.0",
+    "axios": "^1.11.0",
+    "multer": "^2.0.1",
+    "nodemailer": "^7.0.3",
+    "streamifier": "^0.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
