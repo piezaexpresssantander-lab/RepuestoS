@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const repuestoSchema = new mongoose.Schema({
+const productoSchema = new mongoose.Schema({
   nombre: { type: String, required: true },
   descripcion: String,
   precio: { type: Number, required: true },
@@ -9,7 +9,9 @@ const repuestoSchema = new mongoose.Schema({
   modeloMoto: String,
   distribuidor: { type: mongoose.Schema.Types.ObjectId, ref: 'Distribuidor' },
   imagen: String,
+  categoria: { type: mongoose.Schema.Types.ObjectId, ref: 'Categoria' },
   estado: { type: Boolean, default: true }
 }, { timestamps: true });
 
-module.exports = mongoose.model('Repuesto', repuestoSchema);
+
+module.exports = mongoose.model('Producto', productoSchema);
