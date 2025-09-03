@@ -6,9 +6,9 @@ const productoSchema = new mongoose.Schema({
   precio: { type: Number, required: true },
   stock: { type: Number, default: 0 },
   marca: String,
-  modeloMoto: String,
+  modeloMarca: String,
   distribuidor: { type: mongoose.Schema.Types.ObjectId, ref: 'Distribuidor' },
-  imagen: String,
+  imagen: [{ type: String }],
   categoria: { type: mongoose.Schema.Types.ObjectId, ref: 'Categoria' },
   estado: { type: Boolean, default: true }
 }, { timestamps: true });

@@ -3,7 +3,8 @@ const mongoose = require ('mongoose');
 
 const categoriaSchema = new mongoose.Schema({
   nombre: { type: String, required: true },
-  descripcion: String
+  descripcion: String,
+  estado: { type: Boolean, default: true }
 });
 
 
