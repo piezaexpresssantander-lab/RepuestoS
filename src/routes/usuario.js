@@ -31,13 +31,17 @@ router.get("/listarpor/:id",[
 router.get("/activos_inactivos",httpUsuarios.getActivos);
 
 router.post("/insertarUsuario", [
-        // validarJWT,
-        check('email', 'El documento es obligatorio!').not().isEmpty(),
-        check('nombre', 'El documento es obligatorio!').not().isEmpty(),
-        check('email').custom( usuarioHelper.existeEmail ),
-        check('password', 'Password no es válido').isLength({ min: 8}),
-        validarCampos
-       ] , httpUsuarios.postUsuarioInsertar); //insertar ususario
+    // validarJWT,                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+    check('email', 'El email es obligatorio!').not().isEmpty(),
+    check('email', 'El email no es válido!').isEmail(),
+    check('email').custom(usuarioHelper.existeEmail),
+    check('nombre', 'El nombre es obligatorio!').not().isEmpty(),
+    check('password', 'Password no es válido').isLength({ min: 8 }),
+    check('rol').optional().isIn(['cliente', 'distribuidor', 'admin']).withMessage('Rol no válido'),
+    check('telefono').optional().isMobilePhone().withMessage('Teléfono no válido'),
+    check('direccion').optional().isString(),
+    validarCampos
+], httpUsuarios.postUsuarioInsertar); //insertar ususario
 
        
 router.post("/login",[
@@ -62,13 +66,14 @@ router.put("/cambiarContra/:id",[
 
 router.put("/editarUsuario/:id",[
     // validarJWT,
-    check('id', 'No es un ID válido').isMongoId(), 
-    // check('id').custom(usuarioHelper.existeUsuarioID),
-    check ('nombre', 'El nombre es obligatorio!').not().isEmpty(),
-    check('email', 'El documento es obligatorio!').not().isEmpty(),
-    // check('email').custom( usuarioHelper.existeEmail ),
-    // check('password', 'Password no es válido').isLength({ min: 8}),
-        validarCampos
+    check('id', 'No es un ID válido').isMongoId(),
+    check('nombre', 'El nombre es obligatorio!').not().isEmpty(),
+    check('email', 'El email es obligatorio!').not().isEmpty(),
+    check('email', 'El email no es válido!').isEmail(),
+    check('rol').optional().isIn(['cliente', 'distribuidor', 'admin']).withMessage('Rol no válido'),
+    check('telefono').optional().isMobilePhone().withMessage('Teléfono no válido'),
+    check('direccion').optional().isString(),
+    validarCampos
 ], httpUsuarios.putEditarUsuario); // modificar
 
 

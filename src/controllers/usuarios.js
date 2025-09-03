@@ -126,7 +126,7 @@ postUsuarioInsertar: async (req, res) => {
 
   putEditarUsuario: async (req, res) => {
   const { id } = req.params;
-  const { nombre, email, password, estado } = req.body;
+  const { nombre, email, password, estado, rol } = req.body;
 
   try {
     const usuario = await Usuario.findById(id);
@@ -154,6 +154,9 @@ postUsuarioInsertar: async (req, res) => {
 
     if (estado !== undefined) {
       usuario.estado = estado;
+    }
+        if (rol) {
+      usuario.rol = rol; 
     }
 
     await usuario.save();
