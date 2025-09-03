@@ -8,8 +8,10 @@ const ordenSchema = new mongoose.Schema({
     cantidad: Number,
     precioUnitario: Number
   }],
-  referenciaPago: { type: String },
-  total: { type: Number, required: true }
+  pago: { type: mongoose.Schema.Types.ObjectId, ref: 'Pago' },
+  total: { type: Number, required: true },
+  estado: { type: String, enum: ['pendiente', 'en_curso', 'completada', 'cancelada'], default: 'pendiente' }
 }, { timestamps: true });
+
 
 module.exports = mongoose.model('Orden', ordenSchema);
