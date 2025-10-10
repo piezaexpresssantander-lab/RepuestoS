@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const calificacionSchema = new mongoose.Schema({
+const reseñaSchema = new mongoose.Schema({
   usuario: { type: mongoose.Schema.Types.ObjectId, ref: 'Usuario', required: true },
   distribuidor: { type: mongoose.Schema.Types.ObjectId, ref: 'Distribuidor', required: true },
   producto: { type: mongoose.Schema.Types.ObjectId, ref: 'Producto', required: true },
@@ -8,5 +8,4 @@ const calificacionSchema = new mongoose.Schema({
   comentario: { type: String, maxlength: 500 }
 }, { timestamps: true });
 
-module.exports = mongoose.model('Calificacion', calificacionSchema);
-
+module.exports = mongoose.model('Reseña', reseñaSchema);
