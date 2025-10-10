@@ -14,18 +14,24 @@ app.use(express.json());
 // Rutas
 
 // Rutas principales
+const carritos= require('./src/routes/carrito.js');
+const categorias = require('./src/routes/categoria.js');
+const distribuidores = require("./src/routes/distribuidor.js");
+const ordenes = require("./src/routes/orden.js");
+const repuestos = require("./src/routes/producto.js");
+const pagos= require("./src/routes/pago.js");
+const soportes= require ('./src/routes/soporte.js');
 const usuarios = require('./src/routes/usuario.js');
-// const ordenes = require("./src/routes/orden.js");
-// const repuestos = require("./src/routes/repuestos.js");
-// const distribuidores = require("./src/routes/distribuidores.js");
-
 
 // Middleware de rutas
+app.use('/api/carrito', carritos);
+app.use('/api/categoria', categorias);
+app.use('/api/distribuidor', distribuidores);
+app.use('/api/orden', ordenes);
+app.use('/api/pago', pagos);
+app.use('/api/producto', repuestos);
+app.use('/api/soporte', soportes);
 app.use('/api/usuario', usuarios);
-// app.use('/api/orden', ordenes);
-// app.use('/api/repuestos', repuestos);
-// app.use('/api/distribuidores', distribuidores);
-
 
 // Conexión y servidor
 const PORT = process.env.PORT || 3462;
