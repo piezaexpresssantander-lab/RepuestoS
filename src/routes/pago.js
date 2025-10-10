@@ -17,6 +17,7 @@ router.post("/crear", [
   validarCampos
 ], httpPago.crearPago);
 
+
 // Listar todos los pagos
 router.get("/listarTodo", validarJWT, httpPago.listarPagos);
 
@@ -27,6 +28,7 @@ router.get("/:id", [
   check('id').custom(pagoHelper.existePagoID),
   validarCampos
 ], httpPago.obtenerPago);
+
 
 // Actualizar pago
 router.put("/:id", [

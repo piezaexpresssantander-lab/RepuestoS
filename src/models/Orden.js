@@ -10,8 +10,23 @@ const ordenSchema = new mongoose.Schema({
   }],
   pago: { type: mongoose.Schema.Types.ObjectId, ref: 'Pago' },
   total: { type: Number, required: true },
-  estado: { type: String, enum: ['pendiente', 'en_curso', 'completada', 'cancelada'], default: 'pendiente' }
+  estado: { 
+    type: String, 
+    enum: [
+      'pendiente_pago', 'pagado', 'preparando', 'enviado', 
+      'en_camino', 'entregado', 'cancelada'
+    ], 
+    default: 'pendiente_pago' 
+  },
+  historialEnvio: [{
+    estado: { type: String, required: true },
+    fecha: { type: Date, default: Date.now },
+    comentario: String
+  }],
+  
+  trackingNumber: String,
+  urlTracking: String,
+  transportadora: String
 }, { timestamps: true });
-
 
 module.exports = mongoose.model('Orden', ordenSchema);

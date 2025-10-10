@@ -19,6 +19,16 @@ router.post("/crear", [
 // Listar todas las órdenes
 router.get("/listarTodo", validarJWT, httpOrden.listarOrdenes);
 
+
+router.put('/tracking/:id', [
+  // validarJWT,
+  check('id', 'No es un ID válido').isMongoId(),
+  check('trackingNumber', 'El número de guía es obligatorio').not().isEmpty(),
+  check('urlTracking', 'La URL de tracking es obligatoria').isURL(),
+  check('transportadora', 'La transportadora es obligatoria').not().isEmpty(),
+  validarCampos
+], httpOrden.actualizarTracking);
+
 // Obtener orden por ID
 router.get("/:id", [
   validarJWT,
